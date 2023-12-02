@@ -20,3 +20,5 @@ dict = {
     }
 for key in dict:
     print(key)
+    
+print(len("ka"))
