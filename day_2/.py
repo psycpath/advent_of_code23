@@ -32,6 +32,6 @@ for line in lines:
                 z += 1
     if z == 0: 
         sum_of_ID += ID
-    print(sum_of_ID)
+print(sum_of_ID)
 
 #3225: too High
