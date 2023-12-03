@@ -19,6 +19,7 @@ for line in lines:
     line = line.strip("\n")
     games =  line.split(": ")[1].split("; ")
     
+    
     for game in games:
         
         round = game.split(", ")
@@ -37,4 +38,4 @@ print(sum_of_powers)
 #2143       too low
 #2737511487 too high
 #94460487   too high
-#83707
+#83707 thats it kid

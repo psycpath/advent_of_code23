@@ -8,18 +8,14 @@ with open('day_2/input.txt') as file:
 # loaded with only 12 red cubes, 13 green cubes, and 14 blue cubes. 
 # What is the sum of the IDs of those games?
     
-    sum_of_ID = 0
+sum_of_ID = 0
     
 for line in lines:
+    
     z = 0
-    round
-    
-    line = line.strip("\n")
+    line = line.strip("\n")    
     ID = int(line.split(": ")[0].split()[1])
-    line = line.split(": ")[1]
-    games = line.split("; ")
-    
-    #cube = 
+    games =  line.split(": ")[1].split("; ")
     
     for game in games:
         round = game.split(", ")
