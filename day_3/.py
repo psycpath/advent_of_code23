@@ -2,37 +2,56 @@ print('\nOutput for challenge day 3\n')
 
 with open('day_3/input.txt') as file:
     lines = file.readlines()
-
-print(lines[0])
+    
 index = 0
+
 x = 0
 sum_of_part_numbers = 0
 
 for line in lines:
-    
-    if index == 0:
-        for item in line:
-            if item.isdigit():
-                if not line[x+1].isdigit:
-                    len_part = 1
-                    
-                if not "." in "." in lines[index -1][x-1:x+3] or not "." in lines[index][x-1] or not "." in lines[index][x + 3]:
-                    sum_of_part_numbers += int(str(line[x]) + str(line[x+1]) + str(line[x + 2]))
-            x += 1
+    line = line.strip("\n")
 
-    if index == len(lines)-1:
-        for item in line:
-            if item.isdigit():
-                if not "." in "." in lines[index + 1][x-1:x+3] or not "." in lines[index][x-1] or not "." in lines[index][x + 3]:
-                    sum_of_part_numbers += int(line[x] + line[x+1] + line[x + 2])
-                
     for item in line:
+        y = str()
+        
         if item.isdigit():
-            if not "." in lines[index - 1][x-1:x+3] or not "." in "." in lines[index + 1][x-1:x+3] or not "." in lines[index][x-1] or not "." in lines[index][x + 3]:
-                sum_of_part_numbers += int(line[x] + line[x+1] + line[x + 2])
+            
+            if line[x-1].isdigit():
+                continue
+            if not line[x+1].isdigit():
+                len_part = 1
+            elif line[x+1].isdigit() and not line[x+2].isdigit():
+                len_part = 2
+            else:
+                len_part = 3
+
+            if index == 0:
+                try:
+                    if not "." in lines[index + 1][x-1:(x+len_part)] or not "." in lines[index][x-1] or not "." in lines[index][x + (x+len_part)]:
+                        for i in range(len_part):
+                            print(line[x + (len_part)])
+                        sum_of_part_numbers += int(y)
                 
+                except IndexError:
+                    print("ignoring out of range error")
+
+            elif index == len(lines)-1:
+                if not "." in lines[index - 1][x-1:(x+len_part)] or not "." in lines[index][x-1] or not "." in lines[index][x + len_part]:
+                    for i in range(len_part):
+                        y += line[x + (len_part)]
+                    sum_of_part_numbers += int(y)
+
+            elif not "." in lines[index - 1][x-1:(x+len_part)] or not "." in lines[index + 1][x-1:(x+len_part)] or not "." in lines[index][x-1] or not "." in lines[index][x + len_part]:
+                for i in range(len_part):
+                    y += line[x + (len_part)]
+                    sum_of_part_numbers += int
+
+                    
+                    
         x += 1
+        
     index += 1
+    x = 0
     
 print(sum_of_part_numbers)
 
